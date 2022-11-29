@@ -66,6 +66,21 @@ public class UserVO {
         this.realname = user.getRealname();
     }
 
+    public UserVO( UserInfo user ) {
+        this.avatar = user.getAvatar();
+        this.blog = user.getBlog();
+        this.email = user.getEmail();
+        this.username = user.getUsername();
+        this.course = user.getCourse();
+        this.gender = user.getGender();
+        this.github = user.getGithub();
+        this.number = user.getNumber();
+        this.nickname = user.getNickname();
+        this.school = user.getSchool();
+        this.signature = user.getSignature();
+        this.realname = user.getRealname();
+    }
+
     @Override
     public String toString(){
         return    "username: " + username + "\n"

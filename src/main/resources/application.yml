@@ -1,0 +1,43 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: nenuoj
+  thymeleaf:
+    prefix: classpath:/templates/
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        group: DEFAULT_GROUP
+        namespace: 322b3562-754d-4019-93b2-355208f7b654
+        password: root
+        server-addr: "localhost:8848"
+        username: root
+      discovery:
+        namespace: 322b3562-754d-4019-93b2-355208f7b654
+        password: root
+        server-addr: "localhost:8848"
+        username: root
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: defaultDataSource
+    password: root
+    url: "jdbc:mysql://localhost:3306/onlinejudge?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true&rewriteBatchedStatements=true"
+    username: root
+  mail:
+    default-encoding: utf-8
+    host: smtp.163.com
+    password: OHIURBPIHVAGIDMJ
+    properties:
+      mail:
+        smtp:
+          auth: true
+          port: 465
+          ssl:
+            enable: true
+          starttls:
+            enable: true
+            required: true
+    protocol: smtp
+    username: virgil_7@163.com

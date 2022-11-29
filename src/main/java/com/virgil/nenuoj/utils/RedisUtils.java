@@ -93,4 +93,11 @@ public class RedisUtils {
         return redisTemplate.keys(key + "*");
     }
 
+    public void del( String key ) {
+        try {
+            redisTemplate.delete(key);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

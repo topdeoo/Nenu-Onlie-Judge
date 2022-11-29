@@ -3,8 +3,10 @@ package com.virgil.nenuoj.pojo.entity.user;
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -15,9 +17,11 @@ import java.util.Date;
 @Accessors(chain = true)
 @ApiModel(description = "用户信息")
 @TableName(value = "user_info")
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserInfo implements Serializable {
 
-    @TableId(value = "uid", type = IdType.ASSIGN_UUID)
+    @TableId(value = "uid", type = IdType.ASSIGN_ID)
     private String uid;
 
     @TableField(value = "username")
@@ -79,6 +83,10 @@ public class UserInfo implements Serializable {
     @ApiModelProperty(value = "修改时间")
     @TableField(fill = FieldFill.INSERT_UPDATE, value = "gmt_modified")
     private Date gmtModified;
+
+    @TableField(value = "email_verified")
+    @ApiModelProperty(value = "邮箱是否验证")
+    private int emailVerified;
 
 
     public UserInfo(String username, String password){

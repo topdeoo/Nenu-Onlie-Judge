@@ -1,5 +1,7 @@
 package com.virgil.nenuoj.utils;
 
+import lombok.val;
+
 public class Constant {
 
     public enum Account {
@@ -10,6 +12,8 @@ public class Constant {
         CODE_CHANGE_EMAIL_LOCK("change-email-lock:"),
 
         TRY_LOGIN_NUM("try-login-num:"),
+        SEND_REGISTER_CODE("send-register-code:"),
+        TOKEN_CHECK("token-check:"),
 
         ACM_RANK_CACHE("acm_rank_cache"),
         OI_RANK_CACHE("oi_rank_cache"),
@@ -36,6 +40,26 @@ public class Constant {
         public String getCode() {
             return code;
         }
+    }
+
+    public enum Email{
+        OJ_NAME("NENU Online Judge"),
+        OJ_SHORT_NAME("NENUOJ"),
+        OJ_URL("OJ_URL"),
+        EMAIL_BACKGROUND_IMG("EMAIL_BACKGROUND_IMG"),
+        EMAIL_CODE("CODE"),
+        EMAIL_EXPIRE_TIME("EXPIRE_TIME")
+        ;
+
+        private final String val;
+        Email( String  val ) {
+            this.val = val;
+        }
+
+        public String getVal() {
+            return val;
+        }
+
     }
 
 }

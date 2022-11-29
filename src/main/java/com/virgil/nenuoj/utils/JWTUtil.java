@@ -35,7 +35,7 @@ public class JWTUtil {
     public static String buildToken( String username ){
         Algorithm algorithm = Algorithm.HMAC256(secret);
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.HOUR, 2);
+        calendar.add(Calendar.HOUR, 24);
         return JWT.create()
                 .withClaim("username", username)
                 .withIssuer("virgil")
@@ -43,4 +43,19 @@ public class JWTUtil {
                 .sign(algorithm);
     }
 
+    public static String refreshToken( String token ){
+        Algorithm algorithm = Algorithm.HMAC256(secret);
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.HOUR, 24);
+        String username = JWT.decode(token).getClaim("username").asString();
+        return JWT.create()
+                .withClaim("username", username)
+                .withIssuer("virgil")
+                .withExpiresAt(calendar.getTime())
+                .sign(algorithm);
+    }
+
+    public static String getUsername( String token ) {
+        return JWT.decode(token).getClaim("username").asString();
+    }
 }
