@@ -1,4 +1,4 @@
-package com.virgil.nenuoj.pojo.entity.user;
+package com.virgil.nenuoj.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;

@@ -1,5 +1,6 @@
-package com.virgil.nenuoj.controller.oj;
+package com.virgil.nenuoj.controller;
 
+import com.alibaba.fastjson2.JSON;
 import com.virgil.nenuoj.common.exception.StatusFailException;
 import com.virgil.nenuoj.common.result.CommonResult;
 import com.virgil.nenuoj.pojo.vo.UserVO;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.HashMap;
 
@@ -32,7 +34,7 @@ public class AccountController {
         headers.set("Authorization", (String) response.get("token"));
         return ResponseEntity.ok()
                 .headers(headers)
-                .body( (String) response.get("data"));
+                .body(JSON.toJSONString(response.get("data")));
     }
 
     @GetMapping("/register-code")
@@ -54,7 +56,7 @@ public class AccountController {
         headers.set("Authorization", (String) response.get("token"));
         return ResponseEntity.ok()
                 .headers(headers)
-                .body( (String) response.get("data"));
+                .body(JSON.toJSONString(response.get("data")));
     }
 
     @PostMapping("/modify-password")
@@ -88,6 +90,13 @@ public class AccountController {
                                             @RequestHeader("Authorization")String token ) {
         token = token.trim();
         return accountService.modifyInfo(requestBody, token);
+    }
+
+    @GetMapping("/getUserProfile")
+    @ApiOperation("获取用户信息")
+    public UserVO getUserProfile(@RequestParam("username")String username) {
+        username = username.trim();
+        return accountService.getUserProfile(username);
     }
 
 }

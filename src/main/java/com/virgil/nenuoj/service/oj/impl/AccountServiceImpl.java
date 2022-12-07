@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.virgil.nenuoj.common.exception.StatusFailException;
 import com.virgil.nenuoj.common.result.CommonResult;
 import com.virgil.nenuoj.mappers.AccountMappers;
-import com.virgil.nenuoj.pojo.entity.user.UserInfo;
+import com.virgil.nenuoj.pojo.entity.UserInfo;
 import com.virgil.nenuoj.pojo.vo.UserVO;
 import com.virgil.nenuoj.service.common.EmailService;
 import com.virgil.nenuoj.service.oj.AccountService;
@@ -102,6 +102,7 @@ public class AccountServiceImpl implements AccountService {
             userInfo.setEmail(email);
             userInfo.setGmtCreate(new Date());
             userInfo.setEmailVerified(1);
+            userInfo.setNickname(username);
             accountMappers.insert(userInfo);
             accountMappers.insertToPermission(userInfo.getUid(), "student", new Date());
             redisUtils.del(key);
@@ -211,5 +212,11 @@ public class AccountServiceImpl implements AccountService {
         }
         user.setGmtModified(new Date());
         return CommonResult.successResponse(new UserVO(user));
+    }
+
+    @Override
+    public UserVO getUserProfile( String username ) {
+        UserInfo user = accountMappers.selectOne(Wrappers.<UserInfo>query().eq("username", username));
+        return new UserVO(user);
     }
 }

@@ -1,7 +1,7 @@
 package com.virgil.nenuoj;
 
 import com.virgil.nenuoj.mappers.AccountMappers;
-import com.virgil.nenuoj.pojo.entity.user.UserInfo;
+import com.virgil.nenuoj.pojo.entity.UserInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

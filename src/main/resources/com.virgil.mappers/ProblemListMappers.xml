@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.virgil.nenuoj.mappers.ProblemListMappers">
+    <!--status为accept的情况其数值需要更改-->
+    <select id="selectPage" resultType="com.virgil.nenuoj.pojo.entity.ProblemList">
+        select p.id, p.title, group_concat(t.name) ,count(s.status), count(s.status = 0)
+        from problem p
+        left join problem_tag pt on p.id = pt.pid
+        left join tag t on pt.tid = t.id
+        left join submit s on p.id = s.pid
+        group by p.id
+    </select>
+</mapper>

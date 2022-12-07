@@ -1,6 +1,6 @@
 package com.virgil.nenuoj.pojo.vo;
 
-import com.virgil.nenuoj.pojo.entity.user.UserInfo;
+import com.virgil.nenuoj.pojo.entity.UserInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -83,7 +83,7 @@ public class UserVO {
 
     @Override
     public String toString(){
-        return    "username: " + username + "\n"
+        return  "username: " + username + "\n"
                 + "permission: " + permission + "\n"
                 + "avatar: " + avatar + "\n"
                 + "email: " + email + "\n"
@@ -95,7 +95,7 @@ public class UserVO {
                 + "signature: " + signature + "\n"
                 + "github: " + github + "\n"
                 + "gender: " + gender + "\n"
-                + "realname" + realname;
+                + "realname: " + realname;
     }
 
 }

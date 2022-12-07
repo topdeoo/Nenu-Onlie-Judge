@@ -22,4 +22,6 @@ public interface AccountService {
     CommonResult<Void> verifyEmail( String token ,String code );
 
     CommonResult<UserVO> modifyInfo( HashMap<String, String> requestBody ,String token );
+
+    UserVO getUserProfile( String username );
 }

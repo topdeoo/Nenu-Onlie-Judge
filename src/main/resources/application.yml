@@ -41,3 +41,6 @@ spring:
             required: true
     protocol: smtp
     username: virgil_7@163.com
+
+mybatis-plus:
+  mapper-locations: classpath:com/virgil/mappers/*.xml
